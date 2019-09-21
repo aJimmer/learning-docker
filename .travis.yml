@@ -2,6 +2,10 @@ sudo: required
 services:
   - docker
 script:
-  - docker build -t ajimmer/backend .
+  - docker build -t ajimmer/node .
   - docker images ajimmer/node
-  
+deploy:
+  provider: script
+  script: docker push ajimmer/node
+  on: 
+    branch: master
